@@ -1,0 +1,31 @@
+<div class="uk-section uk-section-location">
+    <div class="uk-container uk-container-small">
+        <div class="uk-child-width-1-2@l uk-child-width-1-1" uk-grid>
+            <div class="">
+
+                <div class="uk-padding uk-flex uk-flex-middle uk-fond">
+                   <div>
+                       <div class="uk-h2 uk-margin-medium-top uk-margin-medium-bottom">Notre Contact</div>
+
+                       <div class="uk-margin-top uk-margin-bottom">
+                           {{ options.message_contact }}
+                       </div>
+
+                       <ul class="uk-list uk-margin-large-top">
+                           <li class="uk-margin-bottom text-md flex items-center"><span uk-icon="icon: location; ratio: 2" class="mr-5"></span> {{ options.adresse_company }} </li>
+                           <li class="uk-margin-bottom text-md flex items-center"><span uk-icon="icon: receiver; ratio: 1" class="mr-5"></span> {{ options.numero_company }}</li>
+                           <li class="uk-margin-bottom text-md flex items-center"><span uk-icon="icon: mail; ratio: 1" class="mr-5"></span> {{ options.email_company }}</li>
+                       </ul>
+                   </div>
+                </div>
+
+            </div>
+            <div class="p-0">
+
+                {{ options.carte_map|shortcodes }}
+                {{ options.carte_marker|shortcodes }}
+
+            </div>
+        </div>
+    </div>
+</div>

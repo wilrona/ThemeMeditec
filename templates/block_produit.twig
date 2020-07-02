@@ -1,0 +1,34 @@
+<div class="uk-transition-toggle">
+
+    <div class="uk-card uk-card-theme uk-border-rounded-2">
+        <a href="{{ post.link }}">
+            <div class="uk-card-media-top uk-flex uk-flex-center uk-padding">
+                <img src="{{ post.thumbnail.src }}" alt="" class="uk-height-small">
+            </div>
+        </a>
+    </div>
+
+    <div class="uk-position-relative uk-inline">
+        <div class="uk-card">
+            <div class="py-10 px-5">
+                <h4 class="uk-card-title uk-truncate-overflow">{{ post.title }}</h4>
+                <div class="uk-margin">
+                    {% if post.promo %}<span class="uk-text-green">{{ post.prix_promo|number_format(0,',', ' ') }} FCFA</span> - {% endif %}
+                    <span class="{% if post.promo %}line-through text-red-700 uk-text-small{% else %}uk-text-green{% endif %}">{{ post.prix|number_format(0,',', ' ') }} FCFA</span>
+                </div>
+                <a href="" class="uk-button uk-button-theme-2 uk-button-small">Ajouter au panier</a>
+            </div>
+        </div>
+        <div class="uk-card uk-card-theme uk-transition-fade uk-position-cover uk-border-rounded-b">
+            <div class="py-10 px-5">
+                <h4 class="uk-card-title uk-truncate-overflow"><a href="{{ post.link }}" class="uk-text-black uk-link-reset">{{ post.title }}</a></h4>
+                <div class="uk-margin">
+                    {% if post.promo %}<span class="uk-text-green">{{ post.prix_promo|number_format(0,',', ' ') }} FCFA</span> - {% endif %}
+                    <span class="{% if post.promo %}line-through text-red-700 uk-text-small{% else %}uk-text-green{% endif %}">{{ post.prix|number_format(0,',', ' ') }} FCFA</span>
+
+                </div>
+                <a href="#" uk-toggle="target: #modal" class="uk-button uk-button-theme-2 add_cart uk-button-small" id="{{ post.id }}">Ajouter au panier</a>
+            </div>
+        </div>
+    </div>
+</div>

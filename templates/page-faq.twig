@@ -1,0 +1,52 @@
+{% extends "base.twig" %}
+
+{% block header %}
+    <div style="background-image: url({{ Image(options.header) }});; z-index: 0;" class="pb-0 uk-background-cover uk-position-relative uk-padding uk-height-medium uk-flex uk-flex-center uk-flex-middle">
+        <div  class="uk-position-cover"  style="background-color: #0C0C0C; opacity: .68; z-index: -1;"></div>
+
+        <div class="text-center">
+            <h1 class="uk-h2 uk-text-white uk-margin-remove">{{ post.title }}</h1>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="uk-section uk-position-relative border-b-2">
+        <div class="uk-container uk-container-small">
+
+            <div class="uk-subtitle uk-h2 uk-margin-remove text-center">
+                {{ post.faq_title }}
+            </div>
+
+
+            {% if faqs %}
+
+                <ul uk-accordion class="uk-margin-large-top">
+                    {% for faq in faqs %}
+                        <li class="uk-open">
+                            <a class="uk-accordion-title uk-padding-small border-2" href="#">{{ faq.title }}</a>
+                            <div class="uk-accordion-content border-2 border-t-0 m-0 uk-padding-small">
+                                {{ faq.content|wpautop }}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            {% else %}
+
+                <div class="uk-text-large uk-width-1-1 uk-text-center uk-margin-large-top">
+                    <span class="uk-h2 uk-margin-remove">
+                        Aucune information trouvée
+                    </span>
+                </div>
+
+            {% endif %}
+
+        </div>
+    </div>
+
+
+    {% include 'contact.twig' %}
+{% endblock %}

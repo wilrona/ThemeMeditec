@@ -1,0 +1,159 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div class="uk-section uk-section-large">
+    <div class="uk-container uk-container-small">
+
+        {{ function('flash', 'panier_success') }}
+
+        {% if get['success'] %}
+            <div class="uk-alert-success" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>
+                    Votre commande a été pris en compte avec success. <br>
+                    Nous allons vous contacter dans les brefs delais.
+                </p>
+            </div>
+        {% endif %}
+
+        {% if panier %}
+
+            <div class="uk-text-lead uk-margin-medium-bottom">
+                Vos produits en commande
+            </div>
+            <div class="uk-overflow-auto uk-responsive" id="panier">
+
+                <table class="uk-table uk-table-middle uk-table-divider">
+                    <thead>
+                        <tr>
+                            <th>Nom du produit</th>
+                            <th style="width: 15%">Qté</th>
+                            <th style="width: 15%" class="uk-text-right">P.U</th>
+                            <th style="width:20%" class="uk-text-right">Montant</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for item in panier %}
+
+                            <tr id="{{ item.produit.id }}">
+                                <td class="" data-label="Nom du produit">
+                                    <div class="flex justify-between items-center">
+                                        <div class="p-r-2">{{ item.produit.title }} </div>
+                                        <div class="border-r uk-padding-small text-red-700"><a href="" uk-icon="icon: trash" class="delete_item"></a></div>
+                                    </div>
+                                </td>
+                                <td class="" data-label="Qté">
+                                    <input type="number" value="{{ item.qte }}" class="uk-input uk-border-rounded shadow-sm update_qte"  min="1"/>
+                                </td>
+                                <td class="uk-text-right" data-label="P.U">
+                                    <span class="update_pu">
+                                        {{ item.prix|number_format(0,',', ' ') }}
+                                    </span>
+                                </td>
+                                <td class="uk-text-right" data-label="Montant">
+                                    <span class="update_montant">
+                                        {{ (item.prix*item.qte)|number_format(0,',', ' ') }}
+                                    </span> FCFA
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td class="uk-visible@s"></td>
+                            <td class="uk-visible@s"></td>
+                            <td class="md:text-right uk-visible@s">
+                                <span class="text-xl text-bold">Total</span>
+                            </td>
+                            <td class="uk-text-right text-xl" data-label="Total">
+                                <span class="update_total">
+                                    {{ total|number_format(0,',', ' ') }}
+                                </span> FCFA
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+
+
+        {% else %}
+            <table class="uk-table uk-table-middle uk-table-divider uk-table-striped">
+                <tbody>
+                <tr>
+                    <td class="uk-height-small uk-flex uk-flex-center uk-flex-middle">
+                        <h3 class="uk-text-center uk-h2">Aucun produit dans le panier</h3>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        {% endif %}
+
+
+        {% if panier %}
+            <div class="uk-text-lead uk-margin-medium-bottom uk-margin-large-top" >
+                Vos informations personnelles
+            </div>
+
+            <form action="" method="post">
+                <div class="uk-form-stacked uk-grid-column-small uk-grid-row-medium" uk-grid="">
+                    <div class="uk-width-1-2@m">
+                        <div>
+                            <div class="uk-form-controls">
+                                <input class="uk-input uk-border-rounded shadow-sm" id="form-stacked-text" type="text" placeholder="Nom Complet" name="nom" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-2@m">
+                        <div>
+                            <div class="uk-form-controls">
+                                <input class="uk-input uk-border-rounded shadow-sm" id="form-stacked-text" type="email" placeholder="Adresse Email" name="email" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-2@m">
+                        <div>
+                            <div class="uk-form-controls">
+                                <input class="uk-input uk-border-rounded shadow-sm" id="form-stacked-text" type="text" placeholder="Telephone" name="phone" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-2@m">
+                        <div>
+                            <div class="uk-form-controls">
+                                <select class="uk-select uk-border-rounded shadow-sm" id="form-stacked-select" name="ville" required>
+                                    <option value="">Selectionnez votre ville de residence</option>
+                                    {% for ville in options.vill_config %}
+                                        <option value="{{ ville.name }}">{{ ville.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-1">
+                        <div>
+                            <div class="uk-form-controls">
+                                <textarea name="" id="" cols="30" rows="10" class="uk-textarea uk-border-rounded shadow-sm" name="message" placeholder="Information complémentaire"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-2@m">
+                        <button type="submit" class="uk-button uk-button-theme-2">Envoyer votre commande</button>
+                    </div>
+                </div>
+            </form>
+
+
+        {% endif %}
+    </div>
+</div>
+
+
+
+
+{% endblock %}

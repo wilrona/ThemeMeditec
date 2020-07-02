@@ -1,0 +1,9 @@
+// accessibility
+
+:focus {
+    outline: $global-color dashed 2px;
+    outline-color: $global-color;
+    outline-style: dashed;
+	outline-width: 2px;
+    outline-offset: 4px;
+}

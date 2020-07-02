@@ -1,0 +1,171 @@
+/*!
+Theme Name: WP UIKit Timber Theme
+Theme URI: https://github.com/cpearson3/wordpress-uikit-timber-theme
+Author: Clarence Pearson
+Author URI:  http://clarencepearson.com/
+Description: WP UIKit Timber Theme
+Version: 2020.02.23
+License: MIT License 
+License URI: https://opensource.org/licenses/MIT
+Text Domain: 
+Tags:
+*/
+
+
+// Import variables
+@import "variables.scss";
+
+// Import default variables and available mixins.
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+
+// Mixin overwrites.
+@mixin hook-card() { color: #000; }
+
+// Import UIkit.
+@import "uikit/src/scss/uikit-theme.scss";
+
+@import "ui";
+
+// page header
+header {
+	// page navigation
+	nav {
+		a:focus {
+			text-decoration: underline;
+		}
+
+		@media (min-width: #{ $breakpoint-small + 1 }) {
+			.uk-mobile-link {
+				display: none;
+			}
+			.uk-desktop-link {
+				display: block;
+			}
+		}
+
+		@media (max-width: $breakpoint-small) {
+			.uk-desktop-link {
+				display: none;
+			}
+			.uk-mobile-link {
+				display: block;
+			}
+		}
+	}
+
+}
+
+// main content area
+/*
+main {
+
+}
+*/
+
+// footer 
+footer {
+	@extend .uk-background-muted;
+	@extend .uk-padding;
+	@extend .uk-margin-large-top;
+
+	p, ul {
+		margin-top: $list-margin-top;
+	}
+	ul {
+		@extend .uk-list;
+		@extend .uk-link-text;
+	}
+
+}
+
+
+// container padding !important
+.uk-container {
+    padding-left: $container-padding-horizontal !important;
+    padding-right: $container-padding-horizontal !important;
+}
+
+/* Phone landscape and bigger */
+@media (min-width: $breakpoint-small) {
+    .uk-container {
+        padding-left: $container-padding-horizontal-s !important;
+        padding-right: $container-padding-horizontal-s !important;
+    }
+}
+
+/* Tablet landscape and bigger */
+@media (min-width: $breakpoint-medium) {
+
+    .uk-container {
+        padding-left: $container-padding-horizontal-m !important;
+        padding-right: $container-padding-horizontal-m !important;
+    }
+
+}
+
+// posts single 
+/*
+.single {
+   
+}
+*/
+
+// widget areas
+.sidebar-widget { 
+	@extend .uk-margin;
+
+	ul {
+		@extend .uk-list;
+		@extend .uk-list-divider;
+	}
+
+	form {
+		display: flex;
+		
+		input[type="text"] {
+			height: $global-control-height;
+			width: 66.67% !important;
+		}
+
+		input[type="submit"] {
+			height: $global-control-height;
+			width: 33.33% !important;
+			float: right;
+			padding: 0 !important;
+		}
+	}
+}
+
+// search
+form#searchform {
+	@extend .uk-form-horizontal;
+
+	label {
+		@extend .uk-form-label;
+	}
+
+	#s {
+		@extend .uk-input;
+	}
+
+	#searchsubmit {
+		@extend .uk-button;
+	}
+}
+
+// banner widget area
+.banner-widget-area {
+	@extend .uk-margin;
+}
+
+.banner-widget {
+	// full-width iframe, video and embeds
+	iframe, video, embed {
+		width: 100%;
+	}
+
+	img {
+		@extend .uk-responsive-width;
+	}
+}

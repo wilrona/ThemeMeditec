@@ -1,0 +1,6 @@
+{% extends "base.twig" %}
+{% block content %}
+<article class="uk-container uk-section post-type-{{post.post_type}}" id="post-{{post.ID}}">
+	{% include template_from_string(post.content) %}
+</article>
+{% endblock %}

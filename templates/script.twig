@@ -1,0 +1,110 @@
+
+<div id="modal" class="uk-flex-top" uk-modal="bg-close: false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical" uk-overflow-auto>
+        <div class="uk-body-custom">
+            <div class="uk-text-center uk-height-1-1 uk-flex-middle uk-padding">
+                <div uk-spinner></div>
+                <h1 style="color: #000;" class="uk-margin-remove">Chargement</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var ajaxurl = "{{ admin_url }}";
+
+    window.reloadPanier = function(){
+
+        var data = {
+            'action' : 'reset_panier',
+            'security': '{{ function("wp_create_nonce", "reset_panier_security") }}'
+        };
+        jQuery.post(ajaxurl, data, function (msg) {
+            jQuery('.uk-badge-panier').html(msg);
+        })
+    };
+
+    reloadPanier();
+    setInterval(reloadPanier, 1000);
+
+    jQuery(function($) {
+        $('body').on('click', '.add_cart', function(e) {
+            e.preventDefault();
+
+            let qte = 0;
+            let qte_input = $(this).parent().prev().children();
+
+            if(qte_input.val()){
+                qte = qte_input.val();
+            }
+
+            var data = {
+                'action': 'load_cart',
+                'security': '{{ function("wp_create_nonce", "load_cart_security") }}',
+                'current_item': $(this).attr('id'),
+                'current_qte': qte
+            };
+
+            $.post(ajaxurl, data, function(response) {
+                if (response !== '') {
+                    $('#modal .uk-body-custom').html(response);
+                    reloadPanier();
+                }
+            });
+        });
+
+        $('body').on('change keyup paste','.update_qte', function(e){
+            e.preventDefault();
+
+            if(!$(this).val()){
+                $(this).val(1);
+            }
+
+            var parent = $(this).parent().parent();
+
+            var data = {
+                'action': 'update_cart',
+                'security': '{{ function("wp_create_nonce", "update_cart_security") }}',
+                'current_item': parent.attr('id'),
+                'value_item': $(this).val(),
+                'actions': 'update'
+            };
+
+            $.post(ajaxurl, data, function(response){
+                var data = $.parseJSON(response);
+                console.log(data)
+                $('.update_total').html(data['total']);
+                $('tr#'+data['id']+' .update_montant').html(data['item_montant']);
+            })
+        });
+
+        $('body').on('click', '.delete_item', function(e){
+            e.preventDefault();
+            var parent = $(this).parent().parent().parent();
+            var data = {
+                'action': 'update_cart',
+                'security': '{{ function("wp_create_nonce", "update_cart_security") }}',
+                'current_item': parent.attr('id'),
+                'actions': 'delete'
+            };
+
+            $.post(ajaxurl, data, function(response){
+
+                var data = $.parseJSON(response);
+
+                $('tr#'+data['id']).hide('slow',function(){
+                    $('tr#'+data['id']).remove();
+                });
+
+                if(!data['empty']){
+                    window.location.reload(true);
+                }
+            })
+
+        })
+    });
+
+
+
+</script>

@@ -1,0 +1,158 @@
+{% block html_head_container %}
+{% include 'html-header.twig' %}
+	{% block head %}
+	{% endblock %}
+	</head>
+{% endblock %}
+<body class="home {{body_class}}" data-template="base.twig">
+
+
+	{% block navigtion %}
+		<div class="uk-position-relative">
+
+			<div class="uk-position-custom-top">
+
+				<nav class="uk-nav-header uk-padding uk-padding-remove-horizontal uk-navbar-transparent uk-visible@l" uk-navbar="">
+
+					<div class="uk-navbar-center uk-width-1-6">
+
+						<div class="uk-navbar-center-left" >
+							<div>
+								<ul class="uk-navbar-nav">
+									{% for item in menu_left.get_items %}
+										{% if item.get_children %}
+											<li class="{{item.classes | join(' ')}} {% if item.current_item_ancestor %}uk-active{% endif %}">
+												<a href="#">{{item.title}}</a>
+												<div class="uk-navbar-dropdown" uk-dropdown>
+													<ul class="uk-nav uk-navbar-dropdown-nav">
+														{% for child in item.get_children %}
+															<li class="border-b-2 pb-2 {{child.classes | join(' ')}} {% if child.current %}uk-active{% endif %}"><a href="{{child.get_link}}">{{child.title}}</a></li>
+														{% endfor %}
+													</ul>
+												</div>
+											</li>
+										{% else %}
+											<li class="{{item.classes | join(' ')}} {% if item.current %}uk-active{% endif %}">
+												<a href="{{item.get_link}}">{{item.title}}</a>
+											</li>
+										{% endif %}
+
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+						<a class="uk-navbar-item uk-logo uk-width-1-1" href="{{ site.url }}">
+							<img src="{{ Image(options.logo)}}" alt="">
+						</a>
+						<div class="uk-navbar-center-right">
+							<div>
+								<ul class="uk-navbar-nav">
+									{% for item in menu_right.get_items %}
+										{% if item.get_children %}
+											<li class="{{item.classes | join(' ')}} {% if item.current_item_ancestor %}uk-active{% endif %}">
+												<a href="#">{{item.title}}</a>
+												<div class="uk-navbar-dropdown">
+													<ul class="uk-nav uk-navbar-dropdown-nav">
+														{% for child in item.get_children %}
+															<li class="{{child.classes | join(' ')}} border-b-2 pb-2 {% if child.current %}uk-active{% endif %}"><a href="{{child.get_link}}">{{child.title}}</a></li>
+														{% endfor %}
+													</ul>
+												</div>
+											</li>
+										{% else %}
+											<li class="{{item.classes | join(' ')}} {% if item.current %}uk-active{% endif %}">
+												<a href="{{item.get_link}}">{{item.title}}</a>
+											</li>
+										{% endif %}
+
+									{% endfor %}
+									<li class="uk-position-relative uk-navbar-shop">
+										<span class="uk-position-top-right uk-badge uk-badge-panier">0</span>
+										<a href="{{ TimberPost(options.page_panier).link  }}" uk-icon="icon: cart"></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+
+				</nav>
+
+				<nav class="uk-padding-small uk-padding-remove-vertical uk-nav-header uk-hidden@l uk-margin-remove" uk-sticky uk-navbar>
+					<div class="uk-navbar-left">
+						<a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #offcanvas-usage"></a>
+					</div>
+					<div class="uk-navbar-center">
+						<a class="uk-navbar-item uk-logo" href="{{ site.url }}">
+							<img src="{{ Image(options.logo)}}" alt="">
+						</a>
+					</div>
+					<div class="uk-navbar-right">
+						<ul class="uk-navbar-nav">
+							<li class="uk-position-relative uk-navbar-shop text-black">
+								<span class="uk-position-top-right uk-badge uk-badge-panier">0</span>
+								<a href="{{ TimberPost(options.page_panier).link  }}" uk-icon="icon: cart"></a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+
+				<div class="uk-position-relative">
+					<div id="offcanvas-usage" uk-offcanvas="overlay: true">
+						<div class="uk-offcanvas-bar uk-flex uk-flex-column">
+							<a class="uk-navbar-item uk-logo" href="{{ site.url }}">
+								<img src="{{ Image(options.logo)}}" alt="" class="uk-height-small">
+							</a>
+							<ul class="uk-nav-primary uk-nav-default uk-nav uk-margin-medium-top" uk-nav="">
+								{% for item in menu_mobile.get_items %}
+									{% if item.get_children %}
+										<li class="uk-parent {% if item.current_item_ancestor %}uk-active{% endif %}">
+											<a href="#">{{item.title}}</a>
+											<ul class="uk-nav-sub">
+												{% for child in item.get_children %}
+													<li class="{{child.classes | join(' ')}} border-b-2 pb-2"><a href="{{child.get_link}}">{{child.title}}</a></li>
+												{% endfor %}
+											</ul>
+										</li>
+									{% else %}
+										<li class="{{item.classes | join(' ')}} {% if item.current %}uk-active{% endif %}"><a href="{{item.get_link}}">{{item.title}}</a></li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			{% block header %}
+
+				<div style="background-image: url({{ Image(options.header) }}); z-index: 0;" class="pb-0 uk-background-cover uk-position-relative uk-padding uk-height-medium uk-flex uk-flex-center uk-flex-middle">
+					<div  class="uk-position-cover"  style="background-color: #0C0C0C; opacity: .68; z-index: -1;"></div>
+
+					<h1 class="uk-h2 uk-text-white uk-margin-remove">{{ wp_title }}</h1>
+				</div>
+
+			{% endblock %}
+
+		</div>
+	{% endblock %}
+	<main role="main">
+	{% block content %}
+		Sorry, no content
+	{% endblock %}
+	</main>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit-icons.min.js"></script>
+	{% block footer %}
+	{% include 'footer.twig' %}
+
+		{% include "script.twig" %}
+
+	{{ function('wp_footer') }}
+	{% endblock %}
+
+</body>
+</html>

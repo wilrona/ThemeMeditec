@@ -1,0 +1,23 @@
+<div class="uk-padding uk-padding-remove-horizontal">
+    <ul class="uk-pagination uk-padding-remove">
+        {% if posts.pagination.prev %}
+        <li>
+            <a href="{{posts.pagination.prev.link}}" class="prev {{posts.pagination.prev.link|length ? '' : 'invisible'}}"><i class="fa fa-chevron-left"></i></a>
+        </li>
+        {% endif %}
+        {% for page in posts.pagination.pages %}
+        <li>
+            {% if page.link %}
+                <a href="{{page.link}}" class="{{page.class}}">{{page.title}}</a>
+            {% else %}
+                <span class="{{page.class}} uk-badge uk-text-white uk-text-center">{{page.title}}</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+        {% if posts.pagination.next %}
+        <li>
+            <a href="{{posts.pagination.next.link}}" class="next {{posts.pagination.next.link|length ? '' : 'invisible'}}"><i class="fa fa-chevron-right"></i></a>
+        </li>
+        {% endif %}
+    </ul>
+</div>

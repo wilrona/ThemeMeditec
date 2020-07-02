@@ -1,0 +1,69 @@
+{% extends "base.twig" %}
+
+{% block header %}
+	<div style="background-image: url({{ Image(options.header) }});; z-index: 0;" class="pb-0 uk-background-cover uk-position-relative uk-padding uk-height-medium uk-flex uk-flex-center uk-flex-middle">
+		<div  class="uk-position-cover"  style="background-color: #0C0C0C; opacity: .68; z-index: -1;"></div>
+
+		<div class="text-center">
+			<h2 class="uk-h5 uk-text-white uppercase">Nos services</h2>
+			<h1 class="uk-h2 uk-text-white uk-margin-remove">{{ post.title }}</h1>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block content %}
+	<div class="uk-section uk-section-large uk-position-relative pb-0">
+		<div class="uk-container uk-container-small">
+
+			<div class="uk-child-width-1-1 uk-flex uk-flex-middle" uk-grid="">
+				<div>
+					<div class="uk-subtitle uk-h2 uk-margin-remove text-center">
+						{{ post.sous_title }}
+					</div>
+				</div>
+				<div class="uk-width-1-2@m">
+					<img src="{{ Image(post.left_image) }}" alt="">
+				</div>
+				<div class="uk-width-1-2@m">
+						{{ post.right_content|wpautop }}
+				</div>
+			</div>
+			<div class="uk-child-width-1-1 uk-flex uk-flex-center" uk-grid="">
+				<div>
+
+					<div class="uk-margin-medium-top">
+						{{ post.content|wpautop }}
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="uk-section uk-section-large uk-background-theme-light uk-position-relative">
+		<div class="uk-container uk-container-small">
+			<div class="svg-rounded svg-to-top">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+					<path class="svg-fill-white" d="M0,0c0,0,0,6,0,6.7c0,18,240.2,93.6,615.2,92.6C989.8,98.5,1000,25,1000,6.7c0-0.7,0-6.7,0-6.7H0z"></path>
+				</svg>
+			</div>
+
+			{%  if post.demande_devis %}
+
+				<div class="uk-grid uk-flex uk-flex-center uk-margin-bottom uk-padding uk-padding-remove-horizontal uk-margin-large-top">
+					<div class="uk-width-1-1">
+						<div class="uk-title uk-h3 uk-text-center uk-text-uppercase uk-text-blue">
+							Demandez un devis
+						</div>
+
+					</div>
+				</div>
+
+				{{ post.demande_devis|shortcodes }}
+
+			{% endif %}
+		</div>
+
+	</div>
+{% endblock %}
+ 

@@ -1,0 +1,15 @@
+.wp-core-ui .button-group {
+    white-space: normal !important;
+}
+
+.tr-d-inline .button{
+    margin-bottom: 10px !important;
+}
+
+.pum-field-select2 .pumselect2-container .pumselect2-selection--multiple .pumselect2-search--inline, .pum-tab-panel>.components-tab-panel__tabs, .pum-tabs-container>ul.tabs{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.pum-field-conditions .has-conditions .facet-groups, .pum-field-conditions .no-facet-groups, .pum-field-image .pum-image-field.pum-image-empty .pum-image-select, .pum-field-select2 .pumselect2-results, .pum-tabs-container.horizontal-tabs, .pum-tabs-container.link-tabs>ul.tabs, .pum-tabs-container>.tab-content .form-table, .pum-tabs-container>.tab-content.active{
+    margin-left: 71px !important;
+}
