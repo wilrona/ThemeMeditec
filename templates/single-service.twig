@@ -23,7 +23,9 @@
 					</div>
 				</div>
 				<div class="uk-width-1-2@m">
-					<img src="{{ Image(post.left_image) }}" alt="">
+					{% if post.left_image %}
+						<img src="{{ Image(post.left_image) }}" alt="">
+					{% endif %}
 				</div>
 				<div class="uk-width-1-2@m">
 						{{ post.right_content|wpautop }}
