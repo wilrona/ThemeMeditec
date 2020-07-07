@@ -21,8 +21,8 @@ $box2->addPostType( $post_type->getId() );
 $box2->setCallback(function(){
 
     $form = tr_form();
-    echo $form->text('prix')->setLabel('Montant du produit')->setType('number')->setAttribute('value', 0);
-    echo $form->text('prix_promo')->setLabel('Montant promotionnel')->setType('number')->setAttribute('value', 0);
+    echo $form->text('prix')->setLabel('Montant du produit')->setType('number')->setAttribute('value', tr_posts_field('prix') ? tr_posts_field('prix') : 0);
+    echo $form->text('prix_promo')->setLabel('Montant promotionnel')->setType('number')->setAttribute('value', tr_posts_field('prix_promo') ? tr_posts_field('prix_promo') : 0);
     echo $form->toggle('promo')->setLabel('Activer la promotion ?');
 
 });

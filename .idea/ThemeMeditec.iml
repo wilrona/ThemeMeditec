@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/framework/app" isTestSource="false" packagePrefix="App\" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/anthonybudd/wp_mail" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/facebook/graph-sdk" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/spipu/html2pdf" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/symfony/debug" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/tecnickcom/tcpdf" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/twig/twig" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/typerocket/core" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/typerocket/plugin-builder" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/typerocket/plugin-dashboard" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/typerocket/plugin-dev" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/typerocket/plugin-seo" />
+      <excludeFolder url="file://$MODULE_DIR$/framework/vendor/typerocket/plugin-theme-options" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/framework/vendor/typerocket/core/templates" />
+      </list>
+    </option>
+  </component>
+</module>
