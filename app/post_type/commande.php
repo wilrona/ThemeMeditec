@@ -69,18 +69,25 @@ $box2->setCallback(function(){
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($info['panier'] as $produit): ?>
-            <tr>
-                <td><?= $produit['produit']->title ?></td>
-                <td><?= $produit['qte'] ?></td>
-                <td><?= $produit['prix'] ?></td>
-                <td><?= $produit['prix']*$produit['qte'] ?></td>
-            </tr>
-        <?php
-            $total +=  $produit['prix']*$produit['qte'];
+        <?php if ($info['panier']): ?>
+            <?php foreach ($info['panier'] as $produit): ?>
+                <tr>
+                    <td><?= $produit['produit']->title ?></td>
+                    <td><?= $produit['qte'] ?></td>
+                    <td><?= $produit['prix'] ?></td>
+                    <td><?= $produit['prix']*$produit['qte'] ?></td>
+                </tr>
+            <?php
+                $total +=  $produit['prix']*$produit['qte'];
+                endforeach;
+            ?>
+        <?php else: ?>
 
-        endforeach;
-        ?>
+            <tr>
+                <td colspan="4">Aucune Information</td>
+            </tr>
+
+        <?php endif; ?>
 
         </tbody>
 

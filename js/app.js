@@ -47,7 +47,7 @@
       window.onbeforeunload = null;
     });
 
-    $('.owl-carousel').owlCarousel({
+    $('#owl-carousel').owlCarousel({
       loop:true,
       margin:10,
       nav:false,
@@ -56,6 +56,23 @@
       autoplayTimeout:5000,
       autoplayHoverPause:false,
       items: 1
+    });
+
+    $('#owl-carousel-fabriquant').owlCarousel({
+      loop:true,
+      margin:30,
+      nav:true,
+      center: true,
+      dots: false,
+      autoplay:true,
+      autoplayTimeout:5000,
+      autoplayHoverPause:false,
+      items: 1,
+      responsive:{
+        1200: {
+          items: 4
+        }
+      }
     })
 
 

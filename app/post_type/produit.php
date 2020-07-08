@@ -4,6 +4,18 @@ $post_type = tr_post_type('Produit', 'Produits');
 
 $post_type->setIcon('shopping-bag');
 $post_type->setArgument('supports', ['title', 'thumbnail', 'editor']);
+$post_type->removeColumn('date');
+$post_type->addColumn('prix', true, 'Prix', function($value){
+    echo $value;
+});
+$post_type->addColumn('prix_promo', true, 'Prix promo', function($value){
+    echo $value;
+});
+
+$post_type->addColumn('promo', true, 'Promo en cours ?', function($value){
+    echo $value ? 'OUI' : 'NON';
+});
+//$post_type->addColumn('date');
 
 $box1 = tr_meta_box('information')->setLabel('Informations complementaires');
 $box1->addPostType( $post_type->getId() );

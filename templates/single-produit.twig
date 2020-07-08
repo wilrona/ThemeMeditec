@@ -85,11 +85,11 @@
 									<div>{{ post.terms({query:{taxonomy:'catalogue', orderby:'name', order: 'ASC'}})|join(', ') }}</div>
 								</div>
 							</li>
-							{% if  post.terms({query:{taxonomy:'partenaire', orderby:'name', order: 'ASC'}}) %}
+							{% if  post.terms({query:{taxonomy:'fabriquant', orderby:'name', order: 'ASC'}}) %}
 							<li >
 								<div class="uk-grid uk-child-width-1-2">
 									<div><span class="uk-text-bold">Fabriquant :</span></div>
-									<div>{{ post.terms({query:{taxonomy:'partenaire', orderby:'name', order: 'ASC'}})|join(', ') }}</div>
+									<div>{{ post.terms({query:{taxonomy:'fabriquant', orderby:'name', order: 'ASC'}})|join(', ') }}</div>
 								</div>
 							</li>
 							{% endif %}

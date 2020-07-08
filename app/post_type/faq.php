@@ -11,4 +11,5 @@ $post_type = tr_post_type('FAQ');
 
 $post_type->setIcon('ticket');
 $post_type->setArgument('supports', ['title', 'editor']);
+$post_type->setAdminOnly();
 

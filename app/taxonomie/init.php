@@ -1,4 +1,4 @@
 <?php
 
 include "catalogue.php";
-include "partenaire.php";
+include "fabriquant.php";

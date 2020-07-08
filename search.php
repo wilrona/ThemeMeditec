@@ -27,7 +27,15 @@ $args = array(
     's' => get_search_query(),
     'posts_per_page' => 6,
     'paged' => $paged,
-    'post_type' => 'produit'
+    'post_type' => 'produit',
+    'meta_query' => array(
+        array(
+            'key' => 'prix',
+            'value' => 0,
+            'type' => 'numeric',
+            'compare' => '>'
+        )
+    )
 );
 
 $context['title'] = ''. get_search_query();

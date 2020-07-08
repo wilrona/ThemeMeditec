@@ -26,6 +26,14 @@ if($_GET['child']){
                 'field' => 'slug',
                 'terms' => $_GET['child']
             )
+        ),
+        'meta_query' => array(
+            array(
+                'key' => 'prix',
+                'value' => 0,
+                'type' => 'numeric',
+                'compare' => '>'
+            )
         )
     );
 }else{
@@ -39,6 +47,14 @@ if($_GET['child']){
                 'taxonomy' => $tax->taxonomy,
                 'field' => 'slug',
                 'terms' => $tax->slug
+            )
+        ),
+        'meta_query' => array(
+            array(
+                'key' => 'prix',
+                'value' => 0,
+                'type' => 'numeric',
+                'compare' => '>'
             )
         )
     );

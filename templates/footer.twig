@@ -1,33 +1,21 @@
 {% if  partenaires %}
     <div class="uk-background-theme uk-padding uk-padding-remove-horizontal">
 
-
-        <div uk-slider="autoplay: true; finite: true">
-
             <div class="uk-position-relative uk-container uk-container-small">
 
-                <div class="uk-slider-container">
-                    <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-4@m uk-grid uk-margin-remove">
-                        {% for partenaire in partenaires %}
-                            {% if partenaire.show_onliste %}
-                                <li>
-                                    <a href="{{ partenaire.website }}">
-                                        <img src="{{ Image(partenaire.image) | resize(160, 110) }}" alt="" class="uk-border-rounded h-40">
-                                    </a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
-
-                <div class="">
-                    <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-                    <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                <div class="owl-carousel owl-theme" id="owl-carousel-fabriquant">
+                    {% for partenaire in partenaires %}
+                        {% if partenaire.show_onliste %}
+                        <div class="item" style="background-color: #fff !important;">
+                                <a href="{{ partenaire.website }}">
+                                    <img src="{{ Image(partenaire.image) | resize(180, 110) }}" alt="" class="uk-border-rounded">
+                                </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
 
             </div>
-
-        </div>
 
     </div>
 {% endif %}

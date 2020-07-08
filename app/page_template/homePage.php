@@ -25,7 +25,7 @@ $bloc_service->setCallback(function (){
 
         $form->search('service')->setPostType('service')
 
-    ])->setLimit(3)->setLabel('');
+    ])->setLabel('');
 
 });
 
