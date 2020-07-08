@@ -28,7 +28,15 @@ endif;
 $args = array(
     'post_type' => 'produit',
     'orderby' => 'rand',
-    'posts_per_page' => $post->nbre_produit ? $post->nbre_produit : 3
+    'posts_per_page' => $post->nbre_produit ? $post->nbre_produit : 3,
+    'meta_query' => array(
+        array(
+            'key' => 'prix',
+            'value' => 0,
+            'type' => 'numeric',
+            'compare' => '>'
+        )
+    )
 );
 
 $context['produits'] = Timber::get_posts($args);
