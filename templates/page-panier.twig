@@ -100,38 +100,39 @@
                 Vos informations personnelles
             </div>
 
-            <form action="" method="post">
+            <form action="" method="post" autocomplete="off">
                 <div class="uk-form-stacked uk-grid-column-small uk-grid-row-medium" uk-grid="">
                     <div class="uk-width-1-2@m">
                         <div>
                             <div class="uk-form-controls">
-                                <input class="uk-input uk-border-rounded shadow-sm" id="form-stacked-text" type="text" placeholder="Nom Complet" name="nom" required>
+                                <input class="uk-input uk-border-rounded shadow-sm" type="text" placeholder="Nom Complet" name="nom" required>
                             </div>
                         </div>
                     </div>
                     <div class="uk-width-1-2@m">
                         <div>
                             <div class="uk-form-controls">
-                                <input class="uk-input uk-border-rounded shadow-sm" id="form-stacked-text" type="email" placeholder="Adresse Email" name="email" required>
+                                <input class="uk-input uk-border-rounded shadow-sm" type="email" placeholder="Adresse Email" name="email" required>
                             </div>
                         </div>
                     </div>
                     <div class="uk-width-1-2@m">
                         <div>
                             <div class="uk-form-controls">
-                                <input class="uk-input uk-border-rounded shadow-sm" id="form-stacked-text" type="text" placeholder="Telephone" name="phone" required>
+                                <input class="uk-input uk-border-rounded shadow-sm" type="text" placeholder="Téléphone" name="phone" required>
                             </div>
                         </div>
                     </div>
                     <div class="uk-width-1-2@m">
                         <div>
                             <div class="uk-form-controls">
-                                <select class="uk-select uk-border-rounded shadow-sm" id="form-stacked-select" name="ville" required>
-                                    <option value="">Selectionnez votre ville de residence</option>
-                                    {% for ville in options.vill_config %}
-                                        <option value="{{ ville.name }}">{{ ville.name }}</option>
-                                    {% endfor %}
-                                </select>
+                                <input type="text" class="uk-input uk-border-rounded shadow-sm" id="pac-input" name="ville" required autocomplete="off" placeholder="Localisation">
+{#                                <select class="uk-select uk-border-rounded shadow-sm" name="ville" required>#}
+{#                                    <option value="">Selectionnez votre ville de residence</option>#}
+{#                                    {% for ville in options.vill_config %}#}
+{#                                        <option value="{{ ville.name }}">{{ ville.name }}</option>#}
+{#                                    {% endfor %}#}
+{#                                </select>#}
                             </div>
                         </div>
                     </div>
@@ -143,6 +144,10 @@
                         </div>
                     </div>
                     <div class="uk-width-1-2@m">
+                        <div class="g-recaptcha" data-sitekey="6LfGGa8ZAAAAABNKzdO4gsefHhDLJC5uKiBAYaI5"></div>
+
+                        <br>
+
                         <button type="submit" class="uk-button uk-button-theme-2">Envoyer votre commande</button>
                     </div>
                 </div>
@@ -152,6 +157,21 @@
         {% endif %}
     </div>
 </div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZz_Pizm04BAJIVGqn8fr1ywWEhZ42KPY&libraries=places&callback=initAutocomplete"
+            async defer></script>
+
+    <script>
+        function initAutocomplete() {
+
+            // Create the search box and link it to the UI element.
+            var input = document.getElementById("pac-input");
+            // var searchBox = new google.maps.places.SearchBox(input);
+            var autocomplete = new google.maps.places.Autocomplete(input);
+        }
+    </script>
+
 
 
 
