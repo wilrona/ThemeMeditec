@@ -21,8 +21,7 @@ $box1->setCallback(function(){
     echo $form->text('sous_title')->setLabel('Sous titre');
     echo $form->image('left_image')->setLabel('Image de gauche');
     echo $form->editor('right_content')->setLabel('Contenu de droite');
-
-//    echo $form->text('demande_devis')->setLabel('Formulaire de demande de devis');
+    echo $form->text('demande_devis')->setLabel('Formulaire de demande de devis');
 
 });
 
