@@ -65,11 +65,33 @@
 						<div class="uk-width-1-2@m uk-width-1-1 flex justify-between">
 							<a href="#" uk-toggle="target: #modal" class="uk-button uk-button-theme-2 uk-button-small add_cart uk-width-1-1" id="{{ post.id }}">Ajouter au panier</a>
 						</div>
+
+						{% if refSimilaire %}
+							<div class="uk-width-1-1">
+
+								<ul uk-accordion class="uk-margin-top border pt-2 pb-2">
+									<li>
+										<a class="uk-accordion-title" href="#">Reference Similaire</a>
+										<div class="uk-accordion-content">
+											<ul class="uk-list uk-list-divider">
+												{% for item in refSimilaire %}
+													<li><a href="{{ item.link }}">{{ item.title }}</a></li>
+												{% endfor %}
+											</ul>
+										</div>
+									</li>
+								</ul>
+
+							</div>
+
+						{% endif %}
+
 					</div>
 
-					<div class="uk-padding uk-margin-medium" style="background-color: #EEEEEE;">
+					<div class="uk-padding uk-margin-small" style="background-color: #EEEEEE;">
 
 						<ul class="uk-list">
+
 							{% if post.reference %}
 							<li >
 								<div class="uk-grid uk-child-width-1-2">
@@ -118,7 +140,7 @@
 					<li><a href="#">Description</a></li>
 					{% endif %}
 					{% if similaire %}
-						<li><a href="#">Produits similaires</a></li>
+						<li><a href="#">Dans la même catégorie</a></li>
 					{% endif %}
 				</ul>
 

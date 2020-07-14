@@ -41,6 +41,31 @@ if($post->post_type == 'produit'):
 
     $context['similaire'] = Timber::get_posts($args);
 
+    $term_similary = array();
+
+    foreach ($post->terms('similaire') as $term):
+        array_push($term_similary, $term->slug);
+    endforeach;
+
+    $args = array(
+        'post_type' => 'produit',
+        'post__not_in' => array($post->ID),
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'similaire',
+                'field' => 'slug',
+                'terms' => $term_similary
+            )
+        )
+    );
+
+    $context['refSimilaire'] = null;
+
+    if($term_similary){
+        $context['refSimilaire'] = Timber::get_posts($args);
+    }
+
+
 endif;
 
 Timber::render( array( 'single-' . $post->ID . '.twig', 'single-' . $post->post_type . '.twig', 'single.twig' ), $context );
